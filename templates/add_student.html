@@ -1,49 +1,198 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add Student</title>
+    <title>Add Student | Attendify</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+        href="{{ url_for('static', filename='style.css') }}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-<h1>Add Student</h1>
+<div class="app">
 
-<form method="POST">
+    <!-- Sidebar -->
 
-    <label>Name:</label>
+    <aside class="sidebar">
 
-    <input type="text"
-           name="name"
-           required>
+        <div class="logo">
+            <div class="logo-icon">A</div>
 
-    <label>Register Number:</label>
+            <div>
+                <h2>Attendify</h2>
+                <span>Attendance Portal</span>
+            </div>
+        </div>
 
-    <input type="text"
-           name="register_no"
-           required>
+        <nav>
 
-    <label>Department:</label>
+            <p class="menu-title">MENU</p>
 
-    <input type="text"
-           name="department"
-           required>
+            <a href="/" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
 
-    <button type="submit">
-        Add Student
-    </button>
+            <a href="/add_student" class="nav-item active">
+                <span>＋</span>
+                Add Student
+            </a>
 
-</form>
+            <a href="/mark_attendance" class="nav-item">
+                <span>✓</span>
+                Mark Attendance
+            </a>
 
-<br>
+            <a href="/view_attendance" class="nav-item">
+                <span>▣</span>
+                Attendance Records
+            </a>
 
-<a href="/">Back to Home</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-card">
+
+                <div class="mini-icon">✓</div>
+
+                <div>
+                    <strong>System Online</strong>
+                    <small>Database connected</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <p class="welcome">STUDENT MANAGEMENT</p>
+                <h1>Add New Student</h1>
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-avatar">S</div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <small>Administrator</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Form -->
+
+        <div class="form-box">
+
+            <div class="form-top">
+
+                <div class="large-form-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+                    <h2>Student Information</h2>
+
+                    <p>
+                        Enter the details of the student
+                        to add them to the database.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <form method="POST">
+
+                <div class="form-group">
+
+                    <label>Student Name</label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter student's full name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Register Number</label>
+
+                    <input
+                        type="text"
+                        name="register_no"
+                        placeholder="Enter register number"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Department</label>
+
+                    <input
+                        type="text"
+                        name="department"
+                        placeholder="Example: Information Technology"
+                        required>
+
+                </div>
+
+
+                <button type="submit" class="form-button">
+                    Add Student
+                    <span>→</span>
+                </button>
+
+            </form>
+
+
+            <a href="/" class="back">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+
+        <footer>
+            Student Attendance Management System
+            <span>•</span>
+            Built with Python, Flask & SQLite
+        </footer>
+
+    </main>
+
+</div>
 
 </body>
 
 </html>
+```

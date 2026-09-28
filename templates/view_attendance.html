@@ -1,69 +1,348 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>View Attendance</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance Records | Attendify</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
 </head>
 
+
 <body>
 
-<h1>Attendance Records</h1>
+<div class="app">
 
-<table>
+    <!-- Sidebar -->
 
-<tr>
+    <aside class="sidebar">
 
-    <th>Register No</th>
+        <div class="logo">
 
-    <th>Name</th>
+            <div class="logo-icon">
+                A
+            </div>
 
-    <th>Subject</th>
+            <div>
 
-    <th>Date</th>
+                <h2>Attendify</h2>
 
-    <th>Status</th>
+                <span>
+                    Attendance Portal
+                </span>
 
-</tr>
+            </div>
 
-{% for record in records %}
+        </div>
 
-<tr>
 
-    <td>
-        {{ record.register_no }}
-    </td>
+        <nav>
 
-    <td>
-        {{ record.name }}
-    </td>
+            <p class="menu-title">
+                MENU
+            </p>
 
-    <td>
-        {{ record.subject }}
-    </td>
 
-    <td>
-        {{ record.attendance_date }}
-    </td>
+            <a href="/" class="nav-item">
 
-    <td>
-        {{ record.status }}
-    </td>
+                <span>⌂</span>
 
-</tr>
+                Dashboard
 
-{% endfor %}
+            </a>
 
-</table>
 
-<br>
+            <a href="/add_student" class="nav-item">
 
-<a href="/">Back to Home</a>
+                <span>＋</span>
+
+                Add Student
+
+            </a>
+
+
+            <a href="/mark_attendance" class="nav-item">
+
+                <span>✓</span>
+
+                Mark Attendance
+
+            </a>
+
+
+            <a href="/view_attendance"
+               class="nav-item active">
+
+                <span>▣</span>
+
+                Attendance Records
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-card">
+
+                <div class="mini-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        System Online
+                    </strong>
+
+                    <small>
+                        Database connected
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="welcome">
+                    DATABASE RECORDS
+                </p>
+
+                <h1>
+                    Attendance Records
+                </h1>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    S
+                </div>
+
+                <div>
+
+                    <strong>
+                        Admin
+                    </strong>
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Records -->
+
+        <div class="records-box">
+
+
+            <div class="records-header">
+
+                <div>
+
+                    <p class="section-label">
+                        DATABASE
+                    </p>
+
+                    <h2>
+                        Attendance History
+                    </h2>
+
+                    <p class="records-description">
+                        All attendance records stored
+                        in the database are displayed below.
+                    </p>
+
+                </div>
+
+
+                <a href="/mark_attendance"
+                   class="small-button">
+
+                    + Mark Attendance
+
+                </a>
+
+            </div>
+
+
+            {% if records %}
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Register No.
+                            </th>
+
+                            <th>
+                                Student Name
+                            </th>
+
+                            <th>
+                                Subject
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for record in records %}
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    {{ record.register_no }}
+                                </strong>
+                            </td>
+
+                            <td>
+                                {{ record.name }}
+                            </td>
+
+                            <td>
+                                {{ record.subject }}
+                            </td>
+
+                            <td>
+                                {{ record.attendance_date }}
+                            </td>
+
+                            <td>
+
+                                {% if record.status == "Present" %}
+
+                                <span class="present">
+                                    ✓ Present
+                                </span>
+
+                                {% else %}
+
+                                <span class="absent">
+                                    ✕ Absent
+                                </span>
+
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    ▣
+                </div>
+
+                <h3>
+                    No attendance records yet
+                </h3>
+
+                <p>
+                    Once you mark attendance,
+                    the records will appear here.
+                </p>
+
+                <a href="/mark_attendance"
+                   class="form-button">
+
+                    Mark First Attendance →
+
+                </a>
+
+            </div>
+
+            {% endif %}
+
+
+            <a href="/" class="back">
+                ← Back to Dashboard
+            </a>
+
+
+        </div>
+
+
+        <footer>
+
+            Student Attendance Management System
+
+            <span>•</span>
+
+            Built with Python, Flask & SQLite
+
+        </footer>
+
+    </main>
+
+</div>
 
 </body>
 
 </html>
+```

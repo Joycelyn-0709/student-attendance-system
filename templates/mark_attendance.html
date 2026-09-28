@@ -1,79 +1,267 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Mark Attendance</title>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Mark Attendance | Attendify</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
 </head>
 
+
 <body>
 
-<h1>Mark Attendance</h1>
+<div class="app">
 
-<form method="POST">
+    <!-- Sidebar -->
 
-    <label>Student:</label>
+    <aside class="sidebar">
 
-    <select name="student_id">
+        <div class="logo">
 
-        {% for student in students %}
+            <div class="logo-icon">A</div>
 
-        <option value="{{ student.student_id }}">
+            <div>
+                <h2>Attendify</h2>
+                <span>Attendance Portal</span>
+            </div>
 
-            {{ student.register_no }}
-            -
-            {{ student.name }}
-
-        </option>
-
-        {% endfor %}
-
-    </select>
+        </div>
 
 
-    <label>Subject:</label>
+        <nav>
 
-    <input type="text"
-           name="subject"
-           required>
+            <p class="menu-title">MENU</p>
+
+            <a href="/" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/add_student" class="nav-item">
+                <span>＋</span>
+                Add Student
+            </a>
+
+            <a href="/mark_attendance"
+               class="nav-item active">
+
+                <span>✓</span>
+                Mark Attendance
+
+            </a>
+
+            <a href="/view_attendance" class="nav-item">
+                <span>▣</span>
+                Attendance Records
+            </a>
+
+        </nav>
 
 
-    <label>Date:</label>
+        <div class="sidebar-bottom">
 
-    <input type="date"
-           name="date"
-           required>
+            <div class="mini-card">
 
+                <div class="mini-icon">✓</div>
 
-    <label>Status:</label>
+                <div>
+                    <strong>System Online</strong>
+                    <small>Database connected</small>
+                </div>
 
-    <select name="status">
+            </div>
 
-        <option value="Present">
-            Present
-        </option>
+        </div>
 
-        <option value="Absent">
-            Absent
-        </option>
-
-    </select>
+    </aside>
 
 
-    <button type="submit">
-        Save Attendance
-    </button>
+    <!-- Main -->
 
-</form>
+    <main class="main">
 
-<br>
+        <header class="topbar">
 
-<a href="/">Back to Home</a>
+            <div>
+
+                <p class="welcome">
+                    ATTENDANCE MANAGEMENT
+                </p>
+
+                <h1>Mark Attendance</h1>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="profile-avatar">
+                    S
+                </div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <small>Administrator</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- Attendance Form -->
+
+        <div class="form-box">
+
+            <div class="form-top">
+
+                <div class="large-form-icon attendance-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <h2>Attendance Details</h2>
+
+                    <p>
+                        Select the student and enter
+                        today's attendance information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form method="POST">
+
+
+                <div class="form-group">
+
+                    <label>Student</label>
+
+                    <select name="student_id" required>
+
+                        <option value="">
+                            Select a student
+                        </option>
+
+                        {% for student in students %}
+
+                        <option value="{{ student.student_id }}">
+
+                            {{ student.register_no }}
+                            - {{ student.name }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Subject</label>
+
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Example: Database Management Systems"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Date</label>
+
+                    <input
+                        type="date"
+                        name="date"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Attendance Status</label>
+
+                    <select name="status" required>
+
+                        <option value="">
+                            Select status
+                        </option>
+
+                        <option value="Present">
+                            ✓ Present
+                        </option>
+
+                        <option value="Absent">
+                            ✕ Absent
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="form-button">
+
+                    Save Attendance
+                    <span>→</span>
+
+                </button>
+
+            </form>
+
+
+            <a href="/" class="back">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+
+        <footer>
+
+            Student Attendance Management System
+
+            <span>•</span>
+
+            Built with Python, Flask & SQLite
+
+        </footer>
+
+    </main>
+
+</div>
 
 </body>
 
 </html>
+```

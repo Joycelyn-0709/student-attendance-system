@@ -1,35 +1,294 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Attendance System</title>
+    <title>Attendify | Student Attendance</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+        href="{{ url_for('static', filename='style.css') }}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-<h1>Student Attendance Management System</h1>
+    <div class="app">
 
-<div class="menu">
+        <!-- Sidebar -->
 
-    <a href="/add_student">
-        Add Student
-    </a>
+        <aside class="sidebar">
 
-    <a href="/mark_attendance">
-        Mark Attendance
-    </a>
+            <div class="logo">
+                <div class="logo-icon">A</div>
 
-    <a href="/view_attendance">
-        View Attendance
-    </a>
+                <div>
+                    <h2>Attendify</h2>
+                    <span>Attendance Portal</span>
+                </div>
+            </div>
 
-</div>
+            <nav>
+
+                <p class="menu-title">MENU</p>
+
+                <a href="/" class="nav-item active">
+                    <span>⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="/add_student" class="nav-item">
+                    <span>＋</span>
+                    Add Student
+                </a>
+
+                <a href="/mark_attendance" class="nav-item">
+                    <span>✓</span>
+                    Mark Attendance
+                </a>
+
+                <a href="/view_attendance" class="nav-item">
+                    <span>▣</span>
+                    Attendance Records
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="mini-card">
+                    <div class="mini-icon">✓</div>
+                    <div>
+                        <strong>System Online</strong>
+                        <small>Database connected</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+
+        <main class="main">
+
+            <!-- Top bar -->
+
+            <header class="topbar">
+
+                <div>
+                    <p class="welcome">WELCOME BACK 👋</p>
+                    <h1>Student Dashboard</h1>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-avatar">S</div>
+
+                    <div>
+                        <strong>Admin</strong>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+
+            </header>
+
+
+            <!-- Hero -->
+
+            <section class="hero">
+
+                <div class="hero-text">
+
+                    <span class="badge">● SYSTEM ACTIVE</span>
+
+                    <h2>
+                        Manage attendance
+                        <br>
+                        <span>smarter & faster.</span>
+                    </h2>
+
+                    <p>
+                        Keep track of students, mark daily attendance,
+                        and view attendance records from one simple dashboard.
+                    </p>
+
+                    <a href="/mark_attendance" class="hero-btn">
+                        Mark Attendance
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+                <div class="hero-graphic">
+                    <div class="circle circle-one"></div>
+                    <div class="circle circle-two"></div>
+
+                    <div class="floating-card">
+                        <div class="check">✓</div>
+
+                        <div>
+                            <strong>Attendance</strong>
+                            <span>Management</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Statistics -->
+
+            <section class="section">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">OVERVIEW</p>
+                        <h2>Quick Actions</h2>
+                    </div>
+                </div>
+
+
+                <div class="cards">
+
+                    <a href="/add_student" class="dashboard-card">
+
+                        <div class="card-icon purple">
+                            👨‍🎓
+                        </div>
+
+                        <div class="card-content">
+                            <h3>Add Student</h3>
+
+                            <p>
+                                Register a new student
+                                in the database.
+                            </p>
+
+                            <span class="card-link">
+                                Add student →
+                            </span>
+                        </div>
+
+                    </a>
+
+
+                    <a href="/mark_attendance" class="dashboard-card">
+
+                        <div class="card-icon blue">
+                            ✓
+                        </div>
+
+                        <div class="card-content">
+                            <h3>Mark Attendance</h3>
+
+                            <p>
+                                Record today's attendance
+                                quickly and easily.
+                            </p>
+
+                            <span class="card-link">
+                                Mark now →
+                            </span>
+                        </div>
+
+                    </a>
+
+
+                    <a href="/view_attendance" class="dashboard-card">
+
+                        <div class="card-icon green">
+                            ▣
+                        </div>
+
+                        <div class="card-content">
+                            <h3>View Records</h3>
+
+                            <p>
+                                Check attendance history
+                                and student records.
+                            </p>
+
+                            <span class="card-link">
+                                View records →
+                            </span>
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- Bottom information -->
+
+            <section class="bottom-grid">
+
+                <div class="info-card">
+
+                    <div class="info-header">
+                        <div>
+                            <p class="section-label">DATABASE</p>
+                            <h2>Attendance System</h2>
+                        </div>
+
+                        <span class="status">
+                            ● Connected
+                        </span>
+                    </div>
+
+                    <div class="database-info">
+
+                        <div>
+                            <span class="db-number">01</span>
+                            <strong>Students</strong>
+                            <small>Student information</small>
+                        </div>
+
+                        <div>
+                            <span class="db-number">02</span>
+                            <strong>Attendance</strong>
+                            <small>Attendance records</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quote-card">
+
+                    <div class="quote-symbol">“</div>
+
+                    <p>
+                        Simple records. Better organization.
+                        Smarter attendance management.
+                    </p>
+
+                    <span>Student Attendance System</span>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                Student Attendance Management System
+                <span>•</span>
+                Built with Python, Flask & SQLite
+            </footer>
+
+        </main>
+
+    </div>
 
 </body>
 
 </html>
+```
